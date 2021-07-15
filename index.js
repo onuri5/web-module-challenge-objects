@@ -15,9 +15,12 @@ The function should:
   Example createMenuItem('tacos', 8, 'Lunch') should return {name: 'tacos', price: 8, category: 'Lunch'}
 */
 
-function createMenuItem(/*Your code here*/){
-    /*Your code here*/
+function createMenuItem(name, price, category){
+    const menuObject = {name, price, category};
+   
+    return menuObject;
 }
+
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 1b: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Invoke your function!
@@ -29,6 +32,7 @@ Test your createMenuItems function by doing the following:
   For example: createMenuItem("pizza",5,"lunch") would return this as the object: {name:"Pizza",price:5,category:"lunch"}
 */
 
+createMenuItem('pizza', 12, 'dinner')
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -47,8 +51,17 @@ const burger = {
   name: "Burger", 
   price: 18, 
   category: "Lunch", 
-  
+  discount: function(str) {
+    if (str === "teacher" || str === "student") {
+      let discountPercent = this.price * .25;
+      return this.price - discountPercent; 
+    } else {
+        const discountPercent = this.price * .1;
+        return this.price - discountPercent;
+    }
+  }
 }
+
 
 
 
@@ -68,7 +81,12 @@ const reviews = [
 Using the reviews array above:
   1. log only Julius' feedback to the console - no function needed 
 */
-
+for (let i = 0; i < reviews.length; i++) {
+  let arrObj = reviews[i];
+  if (arrObj.name === "Julius") {
+    console.log(arrObj.feedback);
+  }
+}
 
 
 
@@ -92,8 +110,9 @@ Write a function that creates an object with name, rating, feedback, add the new
   4. should return the resulting array
 */
 
-function addReview(/*Your Code Here */){
-  /*Your Code Here */
+function addReview(arr, name, rating, feedback){
+  arr.push({name, rating, feedback});
+  return arr;
 }
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -107,12 +126,14 @@ Use the getReviewByIndex function below to do the following:
 */
 
 
-function getReviewByIndex(/*Your code here*/) {
-  /*Your code here*/
+function getReviewByIndex(arr, idx) {
+  for (let i = 0; i < arr.length; i++) {
+    let obj = arr[i];
+    if (i === idx) {
+      return `${obj.name} gave the restaurant a ${obj.rating} star review, and their feedback was: ${obj.feedback}`;
+    }
+  }
 }
-
-
-  
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 7: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Write a function to get information about the most recent (last) review called `getLastReview`
@@ -126,11 +147,11 @@ Use the getLastReview function below to do the following:
 */
 
 
-function getLastReview(/*Your code here*/) {
-  /*Your code here*/
+function getLastReview(arr) {
+  return `${arr[arr.length-1].name} gave the restaurant a ${arr[arr.length-1].rating} star review, and their feedback was: ${arr[arr.length - 1].feedback}`;
 } 
 
-
+ 
 
 ///////////////🍔☕️🍽 STRETCH🍔☕️🍽////////////////////
 
